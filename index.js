@@ -3,6 +3,7 @@ const circle = document.getElementById("circle")
 let startX = 0;
 let startY = 0;
 
+// BUG
 circle.addEventListener('mousedown', dragStart);
 
 function dragStart(e) {
