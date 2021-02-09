@@ -18,9 +18,9 @@ circle.addEventListener("mousedown", ((e) => {
     circle.style.left = `${e.pageX - circleX}px`
     circle.style.top = `${e.pageY - circleY}px`
   }))
-}))
 
-// 拖曳完放下
-circle.addEventListener("mouseup", ((e) => {
-  isDragging = false
+  // 拖曳完放下
+  circle.addEventListener("mouseup", ((e) => {
+    isDragging = false
+  }))
 }))
