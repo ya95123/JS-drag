@@ -1,28 +1,26 @@
 const circle = document.getElementById("circle")
 
-let startX = 0;
-let startY = 0;
+// 是否拖曳中
+let isDragging = false
+// 圓 X,Y 座標
+let circleX, circleY
 
-// BUG
-circle.addEventListener('mousedown', dragStart);
+// 點擊拖曳
+circle.addEventListener("mousedown", ((e) => {
+  isDragging = true
+  circleX = e.offsetX
+  circleY = e.offsetY
+  console.log("dragging")
 
-function dragStart(e) {
-  e.preventDefault();
-  //記錄點擊相對被點擊物件的座標
-  startX = e.clientX - circle.offsetLeft;
-  startY = e.clientY - circle.offsetTop;
-  circle.addEventListener('mousemove', move);
-  circle.addEventListener('mouseup', stop);
-}
-function move(e) {
-  //計算出拖曳物件最左上角座標
-  x = e.clientX - startX;
-  y = e.clientY - startY;
-  circle.style.left = x + 'px';
-  circle.style.top = y + 'px';
-}
+  // 監聽 window 滑鼠移動
+  window.addEventListener("mousemove", ((e) => {
+    if (!isDragging) return
+    circle.style.left = `${e.pageX - circleX}px`
+    circle.style.top = `${e.pageY - circleY}px`
+  }))
+}))
 
-function stop() {
-  circle.removeEventListener('mousemove', move);
-  circle.removeEventListener('mouseup', stop)
-}
+// 拖曳完放下
+circle.addEventListener("mouseup", ((e) => {
+  isDragging = false
+}))

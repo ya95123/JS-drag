@@ -6,6 +6,10 @@
           box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 #game {
   width: 100%;
   height: 100vh;
@@ -17,6 +21,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
+  position: relative;
 }
 
 #circle {
@@ -25,15 +31,20 @@
   border-radius: 50%;
   background: -webkit-gradient(linear, left bottom, left top, from(#dfe9f3), to(white));
   background: linear-gradient(to top, #dfe9f3 0%, white 100%);
-  -webkit-transition: 0.45s;
-  transition: 0.45s;
+  position: absolute;
 }
 
 #circle:hover {
-  cursor: pointer;
+  cursor: -webkit-grab;
+  cursor: grab;
   background: -webkit-gradient(linear, left top, left bottom, from(#323232), color-stop(40%, #3F3F3F), color-stop(150%, #1C1C1C)), -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.4)), color-stop(200%, rgba(0, 0, 0, 0.25)));
   background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.25) 200%);
   background-blend-mode: multiply;
+}
+
+#circle:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
 }
 
 #box {
