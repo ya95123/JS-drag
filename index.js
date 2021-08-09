@@ -7,6 +7,7 @@ let circleX, circleY
 
 // 點擊拖曳
 circle.addEventListener("mousedown", ((e) => {
+  e.preventDefault()
   isDragging = true
   circleX = e.offsetX
   circleY = e.offsetY
